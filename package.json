@@ -1,12 +1,16 @@
 {
   "name": "biyejun-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "biyejun utils test repo",
-  "main": "index.js",
+  "bin": {
+    "biye": "bin/biye.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["utils"],
+  "keywords": [
+    "utils"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/biyejun/biyejun-utils"
@@ -14,5 +18,8 @@
   "homepage": "",
   "bugs": "https://github.com/biyejun/biyejun-utils/issues",
   "author": "biyejun",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^11.1.0"
+  }
 }
