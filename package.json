@@ -1,6 +1,7 @@
 {
   "name": "biyejun-utils",
   "version": "0.0.3",
+  "packageManager": "pnpm@8.9.2",
   "description": "biyejun utils test repo",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,7 +14,7 @@
   "bugs": "https://github.com/biyejun/biyejun-utils/issues",
   "author": "biyejun",
   "license": "ISC",
-  "devDependencies": {
-    "commander": "^11.1.0"
+  "engines": {
+    "node": ">=16.14.0"
   }
 }
