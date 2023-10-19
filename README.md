@@ -35,3 +35,15 @@ Enter one-time password: // 如果之前做过 双因素身份验证 (2FA)，需
 Logged in as xxx on https://registry.npmjs.org/.
 
 ```
+
+## 一些参考链接
+
+[pnpm + monorepo + changeset实现多包管理和发布](https://juejin.cn/post/7181720787400228925)
+
+[包管理工具的演进 npm yarn pnpm
+](https://zhuanlan.zhihu.com/p/582229306?utm_id=0)
+
+[2022年了，你还没用pnpm吗](https://juejin.cn/post/7124142007659790372)
+
+[pnpm官方文档](https://pnpm.io/zh/)
+
