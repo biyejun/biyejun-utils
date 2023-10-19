@@ -50,3 +50,8 @@ Logged in as xxx on https://registry.npmjs.org/.
 [如何在Node.js里使用ES6 import](https://www.lema.fun/post/how-to-use-es6-import-in-nodejs--5hombt7ua)
 - `package.json加上 "type" : "module"`
 
+[minimist，命令行参数解析](https://segmentfault.com/a/1190000012843641?sort=newest
+)
+
+[npm 的语义化版本（Semver）](https://blog.csdn.net/Seasons_in_your_sun/article/details/129774803
+)
