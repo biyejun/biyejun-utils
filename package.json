@@ -1,6 +1,6 @@
 {
   "name": "biyejun-utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "biyejun utils test repo",
   "bin": {
     "biye": "bin/biye.js"
