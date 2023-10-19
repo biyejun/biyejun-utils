@@ -19,7 +19,7 @@
   "bugs": "https://github.com/biyejun/biyejun-utils/issues",
   "author": "biyejun",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "commander": "^11.1.0"
   }
 }
