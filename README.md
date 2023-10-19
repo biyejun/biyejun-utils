@@ -47,3 +47,6 @@ Logged in as xxx on https://registry.npmjs.org/.
 
 [pnpm官方文档](https://pnpm.io/zh/)
 
+[如何在Node.js里使用ES6 import](https://www.lema.fun/post/how-to-use-es6-import-in-nodejs--5hombt7ua)
+- `package.json加上 "type" : "module"`
+

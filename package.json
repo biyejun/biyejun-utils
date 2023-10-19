@@ -1,10 +1,11 @@
 {
   "name": "biyejun-utils",
+  "type" : "module",
   "version": "0.0.3",
   "packageManager": "pnpm@8.9.2",
   "description": "biyejun utils test repo",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "release": "node scripts/release.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "license": "ISC",
   "engines": {
     "node": ">=16.14.0"
+  },
+  "devDependencies": {
+    "minimist": "^1.2.8"
   }
 }
