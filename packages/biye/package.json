@@ -1,5 +1,5 @@
 {
-  "name": "cli",
+  "name": "biye",
   "version": "0.0.3",
   "description": "hhhh",
   "bin": {
@@ -21,6 +21,6 @@
   "license": "ISC",
   "devDependencies": {
     "commander": "^11.1.0",
-    "cli-utils": "workspace:*"
+    "biye-utils": "workspace:*"
   }
 }

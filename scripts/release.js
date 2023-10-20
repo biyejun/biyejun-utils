@@ -1,16 +1,17 @@
 import minimist from 'minimist';
 import chalk from 'chalk';
-import semver from 'semver'
-import { createRequire } from 'node:module'
+import semver from 'semver';
+import { createRequire } from 'node:module';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import fs from 'node:fs';
 
-const currentVersion = createRequire(import.meta.url)('../package.json').version
+const require = createRequire(import.meta.url);
 
-console.log(currentVersion, 'currentVersion~');
+// const currentVersion = require('../package.json').version;
+const currentVersion = '0.0.3-beta.0';
 
-console.log(minimist, 'minimist~~');
-
-console.log(process.argv);
-
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const args = minimist(process.argv.slice(2), {
   alias: {
     skipBuild: 'skip-build',
@@ -20,19 +21,29 @@ const args = minimist(process.argv.slice(2), {
   },
 });
 
-console.log(args, 'args');
+const preId = args.preid || semver.prerelease(currentVersion)?.[0];
 
-console.log(
-  chalk.yellow(
-    `The following packages are skipped and NOT published:\n- ddddcle }`
-  )
-);
+const packages = fs.readdirSync(path.resolve(__dirname, '../packages'));
 
-console.log(chalk.cyan('hhhhhasfdsafsddasf'))
+const versionIncrements = [
+  'patch',
+  'minor',
+  'major',
+  ...(preId ? ['prepatch', 'preminor', 'premajor', 'prerelease'] : []),
+];
 
-console.log(chalk.blue('hhhhhasfdsafsddasf'))
+const inc = i => semver.inc(currentVersion, i, preId)
 
-console.log(import.meta.url, 'url');
+console.log(currentVersion, 'currentVersion');
+console.log(inc('patch'), 'patch');
+console.log(inc('prepatch'), 'prepatch');
+console.log(inc('minor'), 'minor');
+console.log(inc('preminor'), 'preminor');
+console.log(inc('major'), 'major');
+console.log(inc('premajor'), 'premajor');
+console.log(inc('prerelease'), 'prerelease');
 
-console.log(typeof currentVersion, 'currentVersion');
 
+
+
+console.log();

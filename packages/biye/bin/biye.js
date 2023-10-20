@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const program = require("commander");
-const { sayHi } = require('cli-utils');
+const { sayHi } = require('../../biye-utils');
 
 
 program.version(`biyejun-utils ${require("../package.json").version}`);

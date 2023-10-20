@@ -55,3 +55,9 @@ Logged in as xxx on https://registry.npmjs.org/.
 
 [npm 的语义化版本（Semver）](https://blog.csdn.net/Seasons_in_your_sun/article/details/129774803
 )
+
+[semver](https://www.npmjs.com/package/semver)
+- `包版本管理 api 解析`
+
+[Execa.js 那些事儿](https://frontend.devrank.cn/traffic-information/7208208239786264631)
+- `执行shell命令`
