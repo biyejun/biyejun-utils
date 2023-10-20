@@ -51,6 +51,12 @@ const step = (msg) => console.log(chalk.cyan(msg));
 
 const keepThePackageName = (pkgName) => pkgName;
 
+const isCorePackage = (pkgName) => {
+  if (!pkgName) return;
+
+  return packages.includes(pkgName);
+};
+
 function updateVersions(version, getNewPackageName = keepThePackageName) {
   // 1. update root package.json
   updatePackage(path.resolve(__dirname, '..'), version, getNewPackageName);
@@ -72,17 +78,23 @@ function updatePackage(pkgRoot, version, getNewPackageName) {
 
 function updateDeps(pkg, depType, version, getNewPackageName) {
   const deps = pkg[depType];
+  console.log(deps, 'deps~~');
   if (!deps) return;
   Object.keys(deps).forEach((dep) => {
     if (deps[dep] === 'workspace:*') {
       return;
     }
-    const newName = getNewPackageName(dep);
-    const newVersion = newName === dep ? version : `npm:${newName}@${version}`;
-    console.log(
-      chalk.yellow(`${pkg.name} -> ${depType} -> ${dep}@${newVersion}`)
-    );
-    deps[dep] = newVersion;
+
+    if (isCorePackage(dep)) {
+      const newName = getNewPackageName(dep);
+      const newVersion =
+        newName === dep ? version : `npm:${newName}@${version}`;
+
+      console.log(
+        chalk.yellow(`${pkg.name} -> ${depType} -> ${dep}@${newVersion}`)
+      );
+      deps[dep] = newVersion;
+    }
   });
 }
 
@@ -142,8 +154,8 @@ async function main(params) {
   }
 }
 
-main().catch(err => {
-  updateVersions(currentVersion)
-  console.error(err)
-  process.exit(1)
+main().catch((err) => {
+  updateVersions(currentVersion);
+  console.error(err);
+  process.exit(1);
 });

@@ -19,8 +19,10 @@
   "bugs": "https://github.com/biyejun/biyejun-utils/issues",
   "author": "biyejun",
   "license": "ISC",
-  "devDependencies": {
-    "commander": "^11.1.0",
+  "dependencies": {
     "biye-utils": "workspace:*"
+  },
+  "devDependencies": {
+    "commander": "^11.1.0"
   }
 }

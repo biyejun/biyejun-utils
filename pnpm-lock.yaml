@@ -25,15 +25,23 @@ importers:
         version: 7.5.4
 
   packages/biye:
-    devDependencies:
+    dependencies:
       biye-utils:
         specifier: workspace:*
         version: link:../biye-utils
+    devDependencies:
       commander:
         specifier: ^11.1.0
         version: 11.1.0
 
-  packages/biye-test: {}
+  packages/biye-test:
+    dependencies:
+      biye-utils:
+        specifier: workspace:*
+        version: link:../biye-utils
+      shortid:
+        specifier: ^2.2.16
+        version: 2.2.16
 
   packages/biye-ui: {}
 

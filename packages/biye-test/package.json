@@ -7,5 +7,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "biye-utils": "workspace:*",
+    "shortid": "^2.2.16"
+  }
 }
