@@ -61,3 +61,7 @@ Logged in as xxx on https://registry.npmjs.org/.
 
 [Execa.js 那些事儿](https://frontend.devrank.cn/traffic-information/7208208239786264631)
 - `执行shell命令`
+
+[execa](https://www.npmjs.com/package/execa)
+
+[enquirer](https://www.npmjs.com/package/enquirer)
