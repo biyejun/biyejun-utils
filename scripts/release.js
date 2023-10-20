@@ -11,8 +11,7 @@ import enquirer from 'enquirer';
 const { prompt } = enquirer;
 const require = createRequire(import.meta.url);
 
-// const currentVersion = require('../package.json').version;
-const currentVersion = '0.0.3-beta.0';
+const currentVersion = require('../package.json').version;
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const args = minimist(process.argv.slice(2), {
@@ -143,6 +142,8 @@ async function main(params) {
   }
 }
 
-main();
-
-console.log();
+main().catch(err => {
+  updateVersions(currentVersion)
+  console.error(err)
+  process.exit(1)
+});
