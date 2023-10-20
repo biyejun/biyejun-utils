@@ -25,8 +25,8 @@ const args = minimist(process.argv.slice(2), {
 
 const preId = args.preid || semver.prerelease(currentVersion)?.[0];
 const skipPrompts = args.skipPrompts;
-
-const isCanary = args.canary;
+const isDryRun = args.dry
+const skipBuild = args.skipBuild
 
 const packages = fs.readdirSync(path.resolve(__dirname, '../packages'));
 
@@ -57,28 +57,26 @@ const isCorePackage = (pkgName) => {
   return packages.includes(pkgName);
 };
 
-function updateVersions(version, getNewPackageName = keepThePackageName) {
+function updateVersions(version) {
   // 1. update root package.json
-  updatePackage(path.resolve(__dirname, '..'), version, getNewPackageName);
+  updatePackage(path.resolve(__dirname, '..'), version);
   // 2. update all packages
   packages.forEach((p) =>
-    updatePackage(getPkgRoot(p), version, getNewPackageName)
+    updatePackage(getPkgRoot(p), version)
   );
 }
 
-function updatePackage(pkgRoot, version, getNewPackageName) {
+function updatePackage(pkgRoot, version) {
   const pkgPath = path.resolve(pkgRoot, 'package.json');
   const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
-  pkg.name = getNewPackageName(pkg.name);
   pkg.version = version;
-  updateDeps(pkg, 'dependencies', version, getNewPackageName);
-  updateDeps(pkg, 'peerDependencies', version, getNewPackageName);
+  updateDeps(pkg, 'dependencies', version);
+  updateDeps(pkg, 'peerDependencies', version);
   fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
 }
 
-function updateDeps(pkg, depType, version, getNewPackageName) {
+function updateDeps(pkg, depType, version) {
   const deps = pkg[depType];
-  console.log(deps, 'deps~~');
   if (!deps) return;
   Object.keys(deps).forEach((dep) => {
     if (deps[dep] === 'workspace:*') {
@@ -86,10 +84,6 @@ function updateDeps(pkg, depType, version, getNewPackageName) {
     }
 
     if (isCorePackage(dep)) {
-      const newName = getNewPackageName(dep);
-      const newVersion =
-        newName === dep ? version : `npm:${newName}@${version}`;
-
       console.log(
         chalk.yellow(`${pkg.name} -> ${depType} -> ${dep}@${newVersion}`)
       );
@@ -122,12 +116,8 @@ async function main(params) {
       });
       targetVersion = result.version;
     } else {
-      console.log(release, 'release~~');
-      console.log(release.match(/\((.*)\)/), 'match');
       targetVersion = release.match(/\((.*)\)/)[1];
     }
-
-    console.log(targetVersion, 'targetVersion');
 
     if (!semver.valid(targetVersion)) {
       throw new Error(`invalid target version: ${targetVersion}`);
@@ -150,7 +140,23 @@ async function main(params) {
     // update all package versions and inter-dependencies
     step('\nUpdating cross dependencies...');
 
-    updateVersions(targetVersion);
+    // updateVersions(targetVersion);
+
+    // TODO: build all packages with types
+    step('\nBuilding all packages...')
+
+    // if (!skipBuild && !isDryRun) {
+    //   await run('pnpm', ['run', 'build', '--withTypes'])
+    //   step('\nTesting built types...')
+    //   await run('pnpm', ['test-dts-only'])
+    // } else {
+    //   console.log(`(skipped)`)
+    // }
+
+    // generate changelog
+    step('\nGenerating changelog...')
+    await run(`pnpm`, ['run', 'changelog'])
+
   }
 }
 

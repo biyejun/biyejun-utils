@@ -65,3 +65,9 @@ Logged in as xxx on https://registry.npmjs.org/.
 [execa](https://www.npmjs.com/package/execa)
 
 [enquirer](https://www.npmjs.com/package/enquirer)
+
+[Angular提交规范](https://zjdoc-gitguide.readthedocs.io/zh_CN/latest/message/angular-commit.html)
+
+[mac 安装 Cz 工具以及使用介绍](https://ld246.com/article/1567587389729)
+
+[git-cz 代码提交统一规范配置](https://www.cnblogs.com/amnesia999/p/17310137.html)

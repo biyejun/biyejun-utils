@@ -5,7 +5,8 @@
   "packageManager": "pnpm@8.9.2",
   "description": "biyejun utils test repo",
   "scripts": {
-    "release": "node scripts/release.js"
+    "release": "node scripts/release.js",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "chalk": "^5.3.0",
+    "conventional-changelog-cli": "^4.1.0",
     "enquirer": "^2.4.1",
     "execa": "^8.0.1",
     "minimist": "^1.2.8",
