@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
 import { execa } from 'execa';
 import enquirer from 'enquirer';
+import pico from 'picocolors';
 
 const { prompt } = enquirer;
 const require = createRequire(import.meta.url);
@@ -25,8 +26,9 @@ const args = minimist(process.argv.slice(2), {
 
 const preId = args.preid || semver.prerelease(currentVersion)?.[0];
 const skipPrompts = args.skipPrompts;
-const isDryRun = args.dry
-const skipBuild = args.skipBuild
+const isDryRun = args.dry;
+const skipBuild = args.skipBuild;
+const skipGit = args.skipGit;
 
 const packages = fs.readdirSync(path.resolve(__dirname, '../packages'));
 
@@ -43,7 +45,7 @@ const run = (bin, args, opts = {}) =>
   execa(bin, args, { stdio: 'inherit', ...opts });
 
 const dryRun = (bin, args, opts = {}) =>
-  console.log(chalk.blue(`[dryrun] ${bin} ${args.join(' ')}`), opts);
+  console.log(pico.blue(`[dryrun] ${bin} ${args.join(' ')}`), opts);
 
 const getPkgRoot = (pkg) => path.resolve(__dirname, '../packages/' + pkg);
 
@@ -61,9 +63,7 @@ function updateVersions(version) {
   // 1. update root package.json
   updatePackage(path.resolve(__dirname, '..'), version);
   // 2. update all packages
-  packages.forEach((p) =>
-    updatePackage(getPkgRoot(p), version)
-  );
+  packages.forEach((p) => updatePackage(getPkgRoot(p), version));
 }
 
 function updatePackage(pkgRoot, version) {
@@ -130,6 +130,7 @@ async function main(params) {
         type: 'confirm',
         name: 'yes',
         message: `Releasing v${targetVersion}. Confirm?`,
+        initial: true,
       });
 
       if (!confirmRelease) {
@@ -139,11 +140,10 @@ async function main(params) {
 
     // update all package versions and inter-dependencies
     step('\nUpdating cross dependencies...');
-
     // updateVersions(targetVersion);
 
     // TODO: build all packages with types
-    step('\nBuilding all packages...')
+    step('\nBuilding all packages...');
 
     // if (!skipBuild && !isDryRun) {
     //   await run('pnpm', ['run', 'build', '--withTypes'])
@@ -154,9 +154,28 @@ async function main(params) {
     // }
 
     // generate changelog
-    step('\nGenerating changelog...')
-    await run(`pnpm`, ['run', 'changelog'])
+    step('\nGenerating changelog...');
+    // await run(`pnpm`, ['run', 'changelog']);
 
+    // update pnpm-lock.yaml
+    step('\nUpdating lockfile...');
+    await run(`pnpm`, ['install', '--prefer-offline']);
+
+    if (!skipGit) {
+      const { stdout } = await run('git', ['diff'], { stdio: 'pipe' });
+      dryRun('ls jj gg hh', ['aa', 'bb'])
+      /* if (stdout) {
+        step('\nCommitting changes...');
+        await runIfNotDry('git', ['add', '-A']);
+        await runIfNotDry('git', [
+          'commit',
+          '-m',
+          `release: v${targetVersion}`,
+        ]);
+      } else {
+        console.log('No changes to commit.');
+      } */
+    }
   }
 }
 

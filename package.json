@@ -25,6 +25,7 @@
     "enquirer": "^2.4.1",
     "execa": "^8.0.1",
     "minimist": "^1.2.8",
+    "picocolors": "^1.0.0",
     "semver": "^7.5.4"
   }
 }
