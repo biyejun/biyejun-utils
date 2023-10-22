@@ -190,7 +190,7 @@ async function main(params) {
 
     // update all package versions and inter-dependencies
     step('\nUpdating cross dependencies...');
-    // updateVersions(targetVersion);
+    updateVersions(targetVersion);
 
     // TODO: build all packages with types
     step('\nBuilding all packages...');
