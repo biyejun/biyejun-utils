@@ -47,11 +47,11 @@ const run = (bin, args, opts = {}) =>
 const dryRun = (bin, args, opts = {}) =>
   console.log(pico.blue(`[dryrun] ${bin} ${args.join(' ')}`), opts);
 
+const runIfNotDry = isDryRun ? dryRun : run;
+
 const getPkgRoot = (pkg) => path.resolve(__dirname, '../packages/' + pkg);
 
 const step = (msg) => console.log(chalk.cyan(msg));
-
-const keepThePackageName = (pkgName) => pkgName;
 
 const isCorePackage = (pkgName) => {
   if (!pkgName) return;
@@ -155,16 +155,15 @@ async function main(params) {
 
     // generate changelog
     step('\nGenerating changelog...');
-    // await run(`pnpm`, ['run', 'changelog']);
+    await runIfNotDry(`pnpm`, ['run', 'changelog']);
 
     // update pnpm-lock.yaml
     step('\nUpdating lockfile...');
-    await run(`pnpm`, ['install', '--prefer-offline']);
+    await runIfNotDry(`pnpm`, ['install', '--prefer-offline']);
 
     if (!skipGit) {
       const { stdout } = await run('git', ['diff'], { stdio: 'pipe' });
-      dryRun('ls jj gg hh', ['aa', 'bb'])
-      /* if (stdout) {
+      if (stdout) {
         step('\nCommitting changes...');
         await runIfNotDry('git', ['add', '-A']);
         await runIfNotDry('git', [
@@ -174,7 +173,7 @@ async function main(params) {
         ]);
       } else {
         console.log('No changes to commit.');
-      } */
+      }
     }
   }
 }
