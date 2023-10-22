@@ -32,6 +32,8 @@ const skipGit = args.skipGit;
 
 const packages = fs.readdirSync(path.resolve(__dirname, '../packages'));
 
+const skippedPackages = []
+
 const versionIncrements = [
   'patch',
   'minor',
@@ -90,6 +92,52 @@ function updateDeps(pkg, depType, version) {
       deps[dep] = newVersion;
     }
   });
+}
+
+async function publishPackage(pkgName, version) {
+  console.log(pkgName, version, 'pkgName, version');
+  if (skippedPackages.includes(pkgName)) {
+    return
+  }
+  const pkgRoot = getPkgRoot(pkgName)
+  const pkgPath = path.resolve(pkgRoot, 'package.json')
+  const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'))
+  if (pkg.private) {
+    return
+  }
+  let releaseTag = null
+  if (args.tag) {
+    releaseTag = args.tag
+  } else if (version.includes('alpha')) {
+    releaseTag = 'alpha'
+  } else if (version.includes('beta')) {
+    releaseTag = 'beta'
+  }
+  step(`Publishing ${pkgName}...`)
+
+  try {
+    await run(
+      'pnpm',
+      [
+        'publish',
+        ...(releaseTag ? ['--tag', releaseTag] : []),
+        '--access',
+        'public',
+        ...(isDryRun ? ['--dry-run'] : []),
+        ...(skipGit ? ['--no-git-checks'] : [])
+      ],
+      {
+        cwd: pkgRoot,
+        stdio: 'pipe'
+      }
+    )
+  } catch (e) {
+    if (e.stderr.match(/previously published/)) {
+      console.log(pico.red(`Skipping already published: ${pkgName}`))
+    } else {
+      throw e
+    }
+  }
 }
 
 async function main(params) {
@@ -174,6 +222,12 @@ async function main(params) {
       } else {
         console.log('No changes to commit.');
       }
+    }
+
+    // publish packages
+    step('\nPublishing packages...');
+    for (const pkg of packages) {
+      await publishPackage(pkg, targetVersion);
     }
   }
 }

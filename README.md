@@ -71,3 +71,5 @@ Logged in as xxx on https://registry.npmjs.org/.
 [mac 安装 Cz 工具以及使用介绍](https://ld246.com/article/1567587389729)
 
 [git-cz 代码提交统一规范配置](https://www.cnblogs.com/amnesia999/p/17310137.html)
+
+[vscode自定义代码片段（代码提示）](https://blog.csdn.net/cainiaoyihao_/article/details/115492570)
