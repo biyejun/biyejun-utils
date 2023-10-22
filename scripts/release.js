@@ -32,7 +32,7 @@ const skipGit = args.skipGit;
 
 const packages = fs.readdirSync(path.resolve(__dirname, '../packages'));
 
-const skippedPackages = []
+const skippedPackages = [];
 
 const versionIncrements = [
   'patch',
@@ -97,23 +97,23 @@ function updateDeps(pkg, depType, version) {
 async function publishPackage(pkgName, version) {
   console.log(pkgName, version, 'pkgName, version');
   if (skippedPackages.includes(pkgName)) {
-    return
+    return;
   }
-  const pkgRoot = getPkgRoot(pkgName)
-  const pkgPath = path.resolve(pkgRoot, 'package.json')
-  const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'))
+  const pkgRoot = getPkgRoot(pkgName);
+  const pkgPath = path.resolve(pkgRoot, 'package.json');
+  const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
   if (pkg.private) {
-    return
+    return;
   }
-  let releaseTag = null
+  let releaseTag = null;
   if (args.tag) {
-    releaseTag = args.tag
+    releaseTag = args.tag;
   } else if (version.includes('alpha')) {
-    releaseTag = 'alpha'
+    releaseTag = 'alpha';
   } else if (version.includes('beta')) {
-    releaseTag = 'beta'
+    releaseTag = 'beta';
   }
-  step(`Publishing ${pkgName}...`)
+  step(`Publishing ${pkgName}...`);
 
   try {
     await run(
@@ -124,21 +124,20 @@ async function publishPackage(pkgName, version) {
         '--access',
         'public',
         ...(isDryRun ? ['--dry-run'] : []),
-        ...(skipGit ? ['--no-git-checks'] : [])
+        ...(skipGit ? ['--no-git-checks'] : []),
       ],
       {
         cwd: pkgRoot,
-        stdio: 'pipe'
+        stdio: 'pipe',
       }
-    )
+    );
 
-    console.log(pico.green(`Successfully published ${pkgName}@${version}`))
-    
+    console.log(pico.green(`Successfully published ${pkgName}@${version}`));
   } catch (e) {
     if (e.stderr.match(/previously published/)) {
-      console.log(pico.red(`Skipping already published: ${pkgName}`))
+      console.log(pico.red(`Skipping already published: ${pkgName}`));
     } else {
-      throw e
+      throw e;
     }
   }
 }
@@ -231,6 +230,18 @@ async function main(params) {
     step('\nPublishing packages...');
     for (const pkg of packages) {
       await publishPackage(pkg, targetVersion);
+    }
+
+    // push to GitHub
+    if (!skipGit) {
+      step('\nPushing to GitHub...');
+      await runIfNotDry('git', ['tag', `v${targetVersion}`]);
+      await runIfNotDry('git', [
+        'push',
+        'origin',
+        `refs/tags/v${targetVersion}`,
+      ]);
+      await runIfNotDry('git', ['push']);
     }
   }
 }
