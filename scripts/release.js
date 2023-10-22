@@ -239,7 +239,7 @@ async function main(params) {
       await runIfNotDry('git', [
         'push',
         'origin',
-        `:refs/tags/v${targetVersion}`,
+        `refs/tags/v${targetVersion}`,
       ]);
       await runIfNotDry('git', ['push']);
     }
