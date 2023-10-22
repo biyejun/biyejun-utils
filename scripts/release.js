@@ -200,7 +200,7 @@ async function main(params) {
     //   step('\nTesting built types...')
     //   await run('pnpm', ['test-dts-only'])
     // } else {
-    //   console.log(`(skipped)`)
+    //   console.log(`(skipBuild)`)
     // }
 
     // generate changelog
@@ -243,6 +243,21 @@ async function main(params) {
       ]);
       await runIfNotDry('git', ['push']);
     }
+
+    if (isDryRun) {
+      console.log(`\nDry run finished - run git diff to see package changes.`);
+    }
+
+    if (skippedPackages.length) {
+      console.log(
+        pico.yellow(
+          `The following packages are skipped and NOT published:\n- ${skippedPackages.join(
+            '\n- '
+          )}`
+        )
+      );
+    }
+    console.log();
   }
 }
 
