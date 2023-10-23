@@ -95,7 +95,6 @@ function updateDeps(pkg, depType, version) {
 }
 
 async function publishPackage(pkgName, version) {
-  console.log(pkgName, version, 'pkgName, version');
   if (skippedPackages.includes(pkgName)) {
     return;
   }
