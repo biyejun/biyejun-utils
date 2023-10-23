@@ -21,7 +21,7 @@
   "author": "biyejun",
   "license": "ISC",
   "dependencies": {
-    "biye-utils": "workspace:*"
+    "biye-test2": "workspace:*"
   },
   "devDependencies": {
     "commander": "^11.1.0"

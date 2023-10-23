@@ -1,1 +1,7 @@
-console.log('测试~~~~');
+function sayHi(name) {
+  console.log(`hello ${name}`);
+}
+
+module.exports = {
+  sayHi,
+}
