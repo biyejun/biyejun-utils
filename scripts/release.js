@@ -145,6 +145,7 @@ async function main(params) {
   console.log(args, 'args');
 
   let targetVersion = args._[0];
+  console.log('targetVersion', targetVersion);
 
   if (!targetVersion) {
     const { release } = await prompt({
@@ -167,97 +168,89 @@ async function main(params) {
     } else {
       targetVersion = release.match(/\((.*)\)/)[1];
     }
-
-    if (!semver.valid(targetVersion)) {
-      throw new Error(`invalid target version: ${targetVersion}`);
-    }
-
-    if (skipPrompts) {
-      step(`Releasing v${targetVersion}...`);
-    } else {
-      const { yes: confirmRelease } = await prompt({
-        type: 'confirm',
-        name: 'yes',
-        message: `Releasing v${targetVersion}. Confirm?`,
-        initial: true,
-      });
-
-      if (!confirmRelease) {
-        return;
-      }
-    }
-
-    // update all package versions and inter-dependencies
-    step('\nUpdating cross dependencies...');
-    updateVersions(targetVersion);
-
-    // TODO: build all packages with types
-    step('\nBuilding all packages...');
-
-    // if (!skipBuild && !isDryRun) {
-    //   await run('pnpm', ['run', 'build', '--withTypes'])
-    //   step('\nTesting built types...')
-    //   await run('pnpm', ['test-dts-only'])
-    // } else {
-    //   console.log(`(skipBuild)`)
-    // }
-
-    // generate changelog
-    step('\nGenerating changelog...');
-    await runIfNotDry(`pnpm`, ['run', 'changelog']);
-
-    // update pnpm-lock.yaml
-    step('\nUpdating lockfile...');
-    await runIfNotDry(`pnpm`, ['install', '--prefer-offline']);
-
-    if (!skipGit) {
-      const { stdout } = await run('git', ['diff'], { stdio: 'pipe' });
-      if (stdout) {
-        step('\nCommitting changes...');
-        await runIfNotDry('git', ['add', '-A']);
-        await runIfNotDry('git', [
-          'commit',
-          '-m',
-          `release: v${targetVersion}`,
-        ]);
-      } else {
-        console.log('No changes to commit.');
-      }
-    }
-
-    // publish packages
-    step('\nPublishing packages...');
-    for (const pkg of packages) {
-      await publishPackage(pkg, targetVersion);
-    }
-
-    // push to GitHub
-    if (!skipGit) {
-      step('\nPushing to GitHub...');
-      await runIfNotDry('git', ['tag', `v${targetVersion}`]);
-      await runIfNotDry('git', [
-        'push',
-        'origin',
-        `refs/tags/v${targetVersion}`,
-      ]);
-      await runIfNotDry('git', ['push']);
-    }
-
-    if (isDryRun) {
-      console.log(`\nDry run finished - run git diff to see package changes.`);
-    }
-
-    if (skippedPackages.length) {
-      console.log(
-        pico.yellow(
-          `The following packages are skipped and NOT published:\n- ${skippedPackages.join(
-            '\n- '
-          )}`
-        )
-      );
-    }
-    console.log();
   }
+
+  if (!semver.valid(targetVersion)) {
+    throw new Error(`invalid target version: ${targetVersion}`);
+  }
+
+  if (skipPrompts) {
+    step(`Releasing v${targetVersion}...`);
+  } else {
+    const { yes: confirmRelease } = await prompt({
+      type: 'confirm',
+      name: 'yes',
+      message: `Releasing v${targetVersion}. Confirm?`,
+      initial: true,
+    });
+
+    if (!confirmRelease) {
+      return;
+    }
+  }
+
+  // update all package versions and inter-dependencies
+  step('\nUpdating cross dependencies...');
+  updateVersions(targetVersion);
+
+  // TODO: build all packages with types
+  step('\nBuilding all packages...');
+
+  // if (!skipBuild && !isDryRun) {
+  //   await run('pnpm', ['run', 'build', '--withTypes'])
+  //   step('\nTesting built types...')
+  //   await run('pnpm', ['test-dts-only'])
+  // } else {
+  //   console.log(`(skipBuild)`)
+  // }
+
+  // generate changelog
+  step('\nGenerating changelog...');
+  await runIfNotDry(`pnpm`, ['run', 'changelog']);
+
+  // update pnpm-lock.yaml
+  step('\nUpdating lockfile...');
+  await runIfNotDry(`pnpm`, ['install', '--prefer-offline']);
+
+  if (!skipGit) {
+    const { stdout } = await run('git', ['diff'], { stdio: 'pipe' });
+    if (stdout) {
+      step('\nCommitting changes...');
+      await runIfNotDry('git', ['add', '-A']);
+      await runIfNotDry('git', ['commit', '-m', `release: v${targetVersion}`]);
+    } else {
+      console.log('No changes to commit.');
+    }
+  }
+
+  // publish packages
+  step('\nPublishing packages...');
+  for (const pkg of packages) {
+    await publishPackage(pkg, targetVersion);
+  }
+
+  // push to GitHub
+  if (!skipGit) {
+    step('\nPushing to GitHub...');
+    await runIfNotDry('git', ['tag', `v${targetVersion}`]);
+    await runIfNotDry('git', ['push', 'origin', `refs/tags/v${targetVersion}`]);
+    await runIfNotDry('git', ['push']);
+  }
+
+  if (isDryRun) {
+    console.log(`\nDry run finished - run git diff to see package changes.`);
+  }
+
+  if (skippedPackages.length) {
+    console.log(
+      pico.yellow(
+        `The following packages are skipped and NOT published:\n- ${skippedPackages.join(
+          '\n- '
+        )}`
+      )
+    );
+  }
+  console.log();
 }
 
 main().catch((err) => {
