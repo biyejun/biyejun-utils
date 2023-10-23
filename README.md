@@ -79,3 +79,40 @@ Logged in as xxx on https://registry.npmjs.org/.
 [.gitignore 忽略文件和目录](https://www.itqaq.com/index/211.html)
 
 [npm ERR! 404 Not Found - Scope not found](https://www.cnblogs.com/shanejix/p/15652257.html)
+
+
+## 一些笔记
+
+* `@vue/cli` 前面的`@vue` 是组织，自己也可以建，在npm官网添加
+
+* `pnpm publish` 发包
+
+* `pnpm unpublish --force` 从远端删除包
+
+  > 从npm库中删除的包，24小时内不允许再发包
+
+* 每次发包时 都需要登录 `pnpm login`，登录的有效时间为24小时
+
+* `pnpm logout` 可以退出登录
+
+  * 如果发包的时候，不想每次都登录（npm发包登录时，npm官网会给自己的邮箱发送一个验证码，这个验证码有时候有延迟，所以有时候不能第一时间获取到，导致登录不上）
+  * 可以从官网申请一个`Access Token`, 在本地仓库中设置token，就不用每次都登录了。
+  * `.npmrc`
+
+  ```js
+  //registry.npmjs.org/:_authToken=npm_XXXXXXXXX
+  ```
+
+* 可以使用 `nvm` 管理 node 版本
+
+* 可以使用 `nrm` 管理仓库获取的镜像源
+
+* git 提交规范，`git cz`，只需要全局安装两个包
+  * `commitizen`
+  * `cz-conventional-changelog`
+  * 再搞一个配置文件 `.czrc`
+  ```js
+    { "path": "cz-conventional-changelog" }
+  ```
+
+
