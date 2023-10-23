@@ -1,3 +1,12 @@
+## [0.0.3-beta.2](https://github.com/biyejun/biyejun-utils/compare/v0.0.3-beta.1...v0.0.3-beta.2) (2023-10-23)
+
+
+### Features
+
+* **测试:** 测试 ([4ad5feb](https://github.com/biyejun/biyejun-utils/commit/4ad5feb80eae537740868ff6e179697cd31744ed))
+
+
+
 ## [0.0.3-beta.1](https://github.com/biyejun/biyejun-utils/compare/v0.0.2...v0.0.3-beta.1) (2023-10-23)
 
 
