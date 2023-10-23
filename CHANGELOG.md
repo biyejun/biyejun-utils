@@ -1,3 +1,18 @@
+## [0.0.2-beta.5](https://github.com/biyejun/biyejun-utils/compare/v0.0.2-beta.1...v0.0.2-beta.5) (2023-10-23)
+
+
+### Features
+
+* **测试2:** 测试2 ([ddec5e6](https://github.com/biyejun/biyejun-utils/commit/ddec5e6ca45800bef4740cb0c5d63da9830822c2))
+* **测试:** 测试 ([bcb93e3](https://github.com/biyejun/biyejun-utils/commit/bcb93e31b49e88e2961c093b3db15bff48133437))
+* **测试:** 测试 ([0f2cf23](https://github.com/biyejun/biyejun-utils/commit/0f2cf235d676827985597214ee8e12d9e6c3caea))
+* **测试:** 测试 ([3e181d2](https://github.com/biyejun/biyejun-utils/commit/3e181d24682c969cba3b42c0f1f4bbeda225a388))
+* **测试:** 测试 ([4e5749d](https://github.com/biyejun/biyejun-utils/commit/4e5749d60d85e8fcecd162285129869cba4ba17e))
+* **测试:** 测试 ([479725a](https://github.com/biyejun/biyejun-utils/commit/479725a926821d7aad2d23419d2040695692e7c5))
+* **测试:** 测试 ([4158413](https://github.com/biyejun/biyejun-utils/commit/41584138fd5b8558973e6b26a996fc34fa6583fb))
+
+
+
 ## [0.0.2-beta.4](https://github.com/biyejun/biyejun-utils/compare/v0.0.2-beta.1...v0.0.2-beta.4) (2023-10-23)
 
 
