@@ -2,7 +2,6 @@
   "name": "biye",
   "version": "0.0.2-beta.1",
   "description": "hhhh",
-  "private": true,
   "bin": {
     "cli": "bin/biye.js"
   },
@@ -21,7 +20,7 @@
   "author": "biyejun",
   "license": "ISC",
   "dependencies": {
-    "biye-test2": "workspace:*"
+    "@biye/biye-test2": "workspace:*"
   },
   "devDependencies": {
     "commander": "^11.1.0"
