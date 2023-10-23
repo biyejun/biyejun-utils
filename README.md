@@ -77,3 +77,5 @@ Logged in as xxx on https://registry.npmjs.org/.
 [什么是 CI/CD？](https://www.redhat.com/zh/topics/devops/what-is-ci-cd#:~:text=CI%2FCD%20%E6%98%AF%E4%B8%80%E7%A7%8D,%EF%BC%9A%E2%80%9C%E9%9B%86%E6%88%90%E5%9C%B0%E7%8B%B1%E2%80%9D%EF%BC%89%E3%80%82)
 
 [.gitignore 忽略文件和目录](https://www.itqaq.com/index/211.html)
+
+[npm ERR! 404 Not Found - Scope not found](https://www.cnblogs.com/shanejix/p/15652257.html)
