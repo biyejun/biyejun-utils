@@ -1,6 +1,7 @@
 {
   "name": "biye",
   "version": "0.0.2-beta.1",
+  "private": true,
   "description": "hhhh",
   "bin": {
     "cli": "bin/biye.js"
