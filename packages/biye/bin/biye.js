@@ -1,11 +1,9 @@
 #!/usr/bin/env node
 const program = require("commander");
-const { sayHi } = require('../../biye-utils');
+const { sayHi } = require('@biye/biye-test2')
 
+sayHi('biye');
 
-program.version(`biyejun-utils ${require("../package.json").version}`);
+program.version(`biye ${require("../package.json").version}`);
 
 program.parse(process.argv)
-
-console.log('bin/biye.js start====');
-sayHi('biyejun');
