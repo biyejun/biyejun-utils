@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "shortid": "^2.2.16",
-    "@biye/biye-utils": "workspace:*"
+    "shortid": "^2.2.16"
   }
 }
