@@ -141,11 +141,10 @@ async function publishPackage(pkgName, version) {
   }
 }
 
-async function main(params) {
+async function main() {
   console.log(args, 'args');
 
   let targetVersion = args._[0];
-  console.log('targetVersion', targetVersion);
 
   if (!targetVersion) {
     const { release } = await prompt({
