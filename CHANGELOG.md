@@ -13,6 +13,21 @@
 
 
 
+## [0.0.3-beta.6](https://github.com/biyejun/biyejun-utils/compare/v0.0.3-beta.5...v0.0.3-beta.6) (2023-10-24)
+
+
+### Bug Fixes
+
+* **修复:** 修复一个bug ([87a9e4b](https://github.com/biyejun/biyejun-utils/commit/87a9e4b0bd7d57d2a1615be3a515c1e8ae80b0ea))
+
+
+### Features
+
+* **测试:** 测试 ([d920704](https://github.com/biyejun/biyejun-utils/commit/d920704efa926f7975658feb5cf02bf7a701e534))
+* **测试:** 测试错误 ([1cc8ecf](https://github.com/biyejun/biyejun-utils/commit/1cc8ecf3f3cfbd1d3352e16b13f3ca5f5eee668e))
+
+
+
 ## [0.0.3-beta.5](https://github.com/biyejun/biyejun-utils/compare/v0.0.3-beta.4...v0.0.3-beta.5) (2023-10-24)
 
 
