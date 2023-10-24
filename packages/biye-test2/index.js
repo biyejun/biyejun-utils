@@ -9,6 +9,8 @@ function dd() {
 }
 
 console.log('测试 Performance Improvements 1');
+console.log('测试 Performance Improvements 2');
+
 
 module.exports = {
   sayHi,
