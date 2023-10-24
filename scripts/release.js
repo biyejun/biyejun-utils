@@ -9,6 +9,8 @@ import { execa } from 'execa';
 import enquirer from 'enquirer';
 import pico from 'picocolors';
 
+let versionUpdated = false;
+
 const { prompt } = enquirer;
 const require = createRequire(import.meta.url);
 
@@ -185,6 +187,8 @@ async function main() {
   step('\nUpdating cross dependencies...');
   updateVersions(targetVersion);
 
+  versionUpdated = true;
+
   // TODO: build all packages with types
   step('\nBuilding all packages...');
 
@@ -233,4 +237,11 @@ async function main() {
   console.log();
 }
 
-main();
+main().catch((err) => {
+  if (versionUpdated) {
+    // revert to current version on failed releases
+    updateVersions(currentVersion);
+  }
+  console.error(err);
+  process.exit(1);
+});
