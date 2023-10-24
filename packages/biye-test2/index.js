@@ -1,4 +1,4 @@
-const { sayHi: sayHi2 } = require('@biye/biye-utils')
+const { sayHi: sayHi2 } = require('@biye/biye-utils');
 
 function sayHi(name) {
   console.log(`hello ${name} from biye-test2`);
@@ -10,5 +10,6 @@ function dd() {
 
 module.exports = {
   sayHi,
-  sayHi2
-}
+  sayHi2,
+  dd,
+};
