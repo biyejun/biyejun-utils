@@ -208,6 +208,9 @@ async function main() {
   step('\nUpdating lockfile...');
   await runIfNotDry(`pnpm`, ['install', '--prefer-offline']);
 
+  let aa = 1 / 0;
+  console.log(aa, 'aa');
+
   // Committing changes
   const { stdout } = await run('git', ['diff'], { stdio: 'pipe' });
   if (stdout) {
