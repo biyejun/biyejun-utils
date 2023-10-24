@@ -28,7 +28,6 @@ const preId = args.preid || semver.prerelease(currentVersion)?.[0];
 const skipPrompts = args.skipPrompts;
 const isDryRun = args.dry;
 const skipBuild = args.skipBuild;
-const skipGit = args.skipGit;
 
 const packages = fs.readdirSync(path.resolve(__dirname, '../packages'));
 
@@ -85,9 +84,9 @@ function updateDeps(pkg, depType, version) {
 
     if (isCorePackage(dep)) {
       console.log(
-        chalk.yellow(`${pkg.name} -> ${depType} -> ${dep}@${newVersion}`)
+        chalk.yellow(`${pkg.name} -> ${depType} -> ${dep}@${version}`)
       );
-      deps[dep] = newVersion;
+      deps[dep] = version;
     }
   });
 }
