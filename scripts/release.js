@@ -208,12 +208,6 @@ async function main() {
   step('\nUpdating lockfile...');
   await runIfNotDry(`pnpm`, ['install', '--prefer-offline']);
 
-  // publish packages
-  step('\nPublishing packages...');
-  for (const pkg of packages) {
-    await publishPackage(pkg, targetVersion);
-  }
-
   // Committing changes
   const { stdout } = await run('git', ['diff'], { stdio: 'pipe' });
   if (stdout) {
@@ -222,6 +216,12 @@ async function main() {
     await runIfNotDry('git', ['commit', '-m', `release: v${targetVersion}`]);
   } else {
     console.log('No changes to commit.');
+  }
+
+  // publish packages
+  step('\nPublishing packages...');
+  for (const pkg of packages) {
+    await publishPackage(pkg, targetVersion);
   }
 
   // push to GitHub
