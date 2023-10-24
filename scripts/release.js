@@ -32,8 +32,6 @@ const skipGit = args.skipGit;
 
 const packages = fs.readdirSync(path.resolve(__dirname, '../packages'));
 
-const skippedPackages = [];
-
 const versionIncrements = [
   'patch',
   'minor',
@@ -95,9 +93,6 @@ function updateDeps(pkg, depType, version) {
 }
 
 async function publishPackage(pkgName, version) {
-  if (skippedPackages.includes(pkgName)) {
-    return;
-  }
   const pkgRoot = getPkgRoot(pkgName);
   const pkgPath = path.resolve(pkgRoot, 'package.json');
   const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
@@ -122,8 +117,7 @@ async function publishPackage(pkgName, version) {
         ...(releaseTag ? ['--tag', releaseTag] : []),
         '--access',
         'public',
-        ...(isDryRun ? ['--dry-run'] : []),
-        ...(skipGit ? ['--no-git-checks'] : []),
+        ...(isDryRun ? ['--dry-run', '--no-git-checks'] : []),
       ],
       {
         cwd: pkgRoot,
@@ -211,15 +205,14 @@ async function main() {
   step('\nUpdating lockfile...');
   await runIfNotDry(`pnpm`, ['install', '--prefer-offline']);
 
-  if (!skipGit) {
-    const { stdout } = await run('git', ['diff'], { stdio: 'pipe' });
-    if (stdout) {
-      step('\nCommitting changes...');
-      await runIfNotDry('git', ['add', '-A']);
-      await runIfNotDry('git', ['commit', '-m', `release: v${targetVersion}`]);
-    } else {
-      console.log('No changes to commit.');
-    }
+  // git add commit
+  const { stdout } = await run('git', ['diff'], { stdio: 'pipe' });
+  if (stdout) {
+    step('\nCommitting changes...');
+    await runIfNotDry('git', ['add', '-A']);
+    await runIfNotDry('git', ['commit', '-m', `release: v${targetVersion}`]);
+  } else {
+    console.log('No changes to commit.');
   }
 
   // publish packages
@@ -229,31 +222,16 @@ async function main() {
   }
 
   // push to GitHub
-  if (!skipGit) {
-    step('\nPushing to GitHub...');
-    await runIfNotDry('git', ['tag', `v${targetVersion}`]);
-    await runIfNotDry('git', ['push', 'origin', `refs/tags/v${targetVersion}`]);
-    await runIfNotDry('git', ['push']);
-  }
+  step('\nPushing to GitHub...');
+  await runIfNotDry('git', ['tag', `v${targetVersion}`]);
+  await runIfNotDry('git', ['push', 'origin', `refs/tags/v${targetVersion}`]);
+  await runIfNotDry('git', ['push']);
 
   if (isDryRun) {
     console.log(`\nDry run finished - run git diff to see package changes.`);
   }
 
-  if (skippedPackages.length) {
-    console.log(
-      pico.yellow(
-        `The following packages are skipped and NOT published:\n- ${skippedPackages.join(
-          '\n- '
-        )}`
-      )
-    );
-  }
   console.log();
 }
 
-main().catch((err) => {
-  updateVersions(currentVersion);
-  console.error(err);
-  process.exit(1);
-});
+main();

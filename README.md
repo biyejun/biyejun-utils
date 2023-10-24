@@ -80,6 +80,8 @@ Logged in as xxx on https://registry.npmjs.org/.
 
 [npm ERR! 404 Not Found - Scope not found](https://www.cnblogs.com/shanejix/p/15652257.html)
 
+[alpha、beta、rc各版本区别](https://www.jianshu.com/p/a812d2d2c5c8)
+
 
 ## 一些笔记
 
