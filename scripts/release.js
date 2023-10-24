@@ -109,7 +109,7 @@ async function publishPackage(pkgName, version) {
   step(`Publishing ${pkgName}...`);
 
   try {
-    await run(
+    /* await run(
       'pnpm',
       [
         'publish',
@@ -122,7 +122,7 @@ async function publishPackage(pkgName, version) {
         cwd: pkgRoot,
         stdio: 'pipe',
       }
-    );
+    ); */
 
     console.log(pico.green(`Successfully published ${pkgName}@${version}`));
   } catch (e) {
