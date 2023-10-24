@@ -8,6 +8,8 @@ function dd() {
   console.log('新版发布 hhhh');
 }
 
+console.log('测试 Performance Improvements 1');
+
 module.exports = {
   sayHi,
   sayHi2,
