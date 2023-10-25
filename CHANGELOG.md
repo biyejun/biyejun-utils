@@ -1,3 +1,12 @@
+## [0.0.3-beta.9](https://github.com/biyejun/biyejun-utils/compare/v0.0.3-beta.8...v0.0.3-beta.9) (2023-10-25)
+
+
+### Features
+
+* **测试 修改脚本:** 修改 ([1db977d](https://github.com/biyejun/biyejun-utils/commit/1db977d0a71cde6a0acfda7ae35629224264a9d4))
+
+
+
 ## [0.0.3-beta.8](https://github.com/biyejun/biyejun-utils/compare/v0.0.3-beta.7...v0.0.3-beta.8) (2023-10-25)
 
 
