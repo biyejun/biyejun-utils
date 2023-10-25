@@ -1,7 +1,7 @@
 {
   "name": "biyejun-utils",
   "type": "module",
-  "version": "0.0.3-beta.9",
+  "version": "0.0.3-beta.10",
   "packageManager": "pnpm@8.9.2",
   "description": "biyejun utils test repo",
   "scripts": {
