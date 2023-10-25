@@ -15,10 +15,10 @@ jobs:
         uses: actions/checkout@master
       - name: Create Release for Tag
         id: release_tag
-        uses: yyx990803/release-tag@master
+        uses: biyejun/release-tag@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
           body: |
-            Please refer to [CHANGELOG.md](https://github.com/vuejs/vue/blob/main/CHANGELOG.md) for details.
+            Please refer to [CHANGELOG.md](https://github.com/biyejun/biyejun-utils/blob/master/CHANGELOG.md) for details.
