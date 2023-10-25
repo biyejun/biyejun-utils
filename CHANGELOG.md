@@ -1,3 +1,12 @@
+## [0.0.3-beta.12](https://github.com/biyejun/biyejun-utils/compare/v0.0.3-beta.11...v0.0.3-beta.12) (2023-10-25)
+
+
+### Features
+
+* **测试yml:** 测试yml ([0a616ec](https://github.com/biyejun/biyejun-utils/commit/0a616eca7d22db91cb9046baa6c3efe28825d67b))
+
+
+
 ## [0.0.3-beta.11](https://github.com/biyejun/biyejun-utils/compare/v0.0.3-beta.10...v0.0.3-beta.11) (2023-10-25)
 
 
