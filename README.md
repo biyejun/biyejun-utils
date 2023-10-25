@@ -88,6 +88,8 @@ Logged in as xxx on https://registry.npmjs.org/.
 
 ["Resource not accessible by integration"](https://stackoverflow.com/questions/70435286/resource-not-accessible-by-integration-on-github-post-repos-owner-repo-ac)
 
+[使用Github Actions自动化构建exe](https://zhuanlan.zhihu.com/p/133766528)
+
 
 ## 一些笔记
 
