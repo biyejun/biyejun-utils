@@ -86,6 +86,8 @@ Logged in as xxx on https://registry.npmjs.org/.
 
 [GitHub action release tag](https://stackoverflow.com/questions/63932728/github-action-release-tag)
 
+["Resource not accessible by integration"](https://stackoverflow.com/questions/70435286/resource-not-accessible-by-integration-on-github-post-repos-owner-repo-ac)
+
 
 ## 一些笔记
 
