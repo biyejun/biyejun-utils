@@ -84,6 +84,8 @@ Logged in as xxx on https://registry.npmjs.org/.
 
 [git fork使用流程](https://blog.csdn.net/qq_36412715/article/details/122121445)
 
+[GitHub action release tag](https://stackoverflow.com/questions/63932728/github-action-release-tag)
+
 
 ## 一些笔记
 
