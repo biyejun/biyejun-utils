@@ -1,3 +1,15 @@
+## [0.0.3-beta.8](https://github.com/biyejun/biyejun-utils/compare/v0.0.3-beta.7...v0.0.3-beta.8) (2023-10-25)
+
+
+### Features
+
+* **测试 action release:** 测试 action release ([722f892](https://github.com/biyejun/biyejun-utils/commit/722f8924de0f10355fae498bc2d10ce19668dbfa))
+* **测试:** 测试sssss ([25d33a0](https://github.com/biyejun/biyejun-utils/commit/25d33a0da89d5f82d22b7fb3143ad18e0c5b8c42))
+* **action测试:** action测试 111111 ([c637256](https://github.com/biyejun/biyejun-utils/commit/c637256ad9b0d934859cdf1ca132a0f7b71ac568))
+* **learning github actions:** learning GitHub Actions ([4199243](https://github.com/biyejun/biyejun-utils/commit/41992439377f7de582a31e4a5e49b4ed2a79aeab))
+
+
+
 ## [0.0.3-beta.7](https://github.com/biyejun/biyejun-utils/compare/v0.0.3-beta.6...v0.0.3-beta.7) (2023-10-24)
 
 
