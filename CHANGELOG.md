@@ -1,3 +1,13 @@
+# [1.0.0](https://github.com/biyejun/biyejun-utils/compare/v0.0.3-beta.14...v1.0.0) (2023-10-26)
+
+
+### Features
+
+* **测试:** 测试 ([e02ac53](https://github.com/biyejun/biyejun-utils/commit/e02ac5353956d0b3693c9fda4a708d5f42530439))
+* add build.js ([4a64439](https://github.com/biyejun/biyejun-utils/commit/4a644396aeb97579992415e545eaff487550bdd0))
+
+
+
 # [0.1.0](https://github.com/biyejun/biyejun-utils/compare/v0.0.3-beta.14...v0.1.0) (2023-10-26)
 
 
