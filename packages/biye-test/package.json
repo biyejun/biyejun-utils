@@ -5,6 +5,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json",
+    "./inner-utils": "./inner-utils/index.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
