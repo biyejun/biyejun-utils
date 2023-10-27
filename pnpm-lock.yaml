@@ -42,9 +42,9 @@ importers:
 
   packages/biye-test:
     dependencies:
-      '@biye/biye-test2':
+      '@biye/biye-ui':
         specifier: workspace:*
-        version: link:../biye-test2
+        version: link:../biye-ui
       shortid:
         specifier: ^2.2.16
         version: 2.2.16

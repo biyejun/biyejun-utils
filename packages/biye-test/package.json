@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@biye/biye-test2": "workspace:*",
+    "@biye/biye-ui": "workspace:*",
     "shortid": "^2.2.16"
   }
 }
