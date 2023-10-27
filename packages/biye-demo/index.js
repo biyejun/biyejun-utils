@@ -1,9 +1,13 @@
 const biyeUI = require('@biye/biye-ui');
 const { generateUI, updateUI } = biyeUI;
+const { testVal } = require('./test');
 
-function start() {
-  generateUI();
-  updateUI();
+function test() {
+  console.log(testVal, 'testVal');
 }
 
-start();
+module.exports = {
+  generateUI,
+  updateUI,
+  test,
+};
