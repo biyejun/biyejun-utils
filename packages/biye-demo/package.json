@@ -5,6 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "test.js"
+  ],
   "exports": {
     ".": "./index.js",
     "./package.json": "./package.json",
