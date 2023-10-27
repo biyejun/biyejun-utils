@@ -1,3 +1,14 @@
+## [1.0.1](https://github.com/biyejun/biyejun-utils/compare/v1.0.0...v1.0.1) (2023-10-27)
+
+
+### Features
+
+* **biye-test:** add inner test fun ([a61fe09](https://github.com/biyejun/biyejun-utils/commit/a61fe090a9d8964d1a5e64c85faa56df20ebc1f5))
+* **biyeui:** add test fun ([904dea2](https://github.com/biyejun/biyejun-utils/commit/904dea2efd5413ad543cc42c3fbd4ea0d0ecce3e))
+* **test:** biye-test add test code ([d2c30cc](https://github.com/biyejun/biyejun-utils/commit/d2c30cccd3ff698a19fa2b08b60153a63c008a99))
+
+
+
 # [1.0.0](https://github.com/biyejun/biyejun-utils/compare/v0.0.3-beta.14...v1.0.0) (2023-10-26)
 
 
