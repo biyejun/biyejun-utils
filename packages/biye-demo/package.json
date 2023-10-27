@@ -6,7 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "files": [
-    "test.js"
+    "test.js",
+    "test2.js",
+    "inner-utils/*.js"
   ],
   "exports": {
     ".": "./index.js",
