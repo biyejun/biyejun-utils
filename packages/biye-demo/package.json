@@ -8,7 +8,9 @@
   "files": [
     "test.js",
     "test2.js",
-    "inner-utils/*.js"
+    "inner-utils",
+    "index.js",
+    ".gitkeep"
   ],
   "exports": {
     ".": "./index.js",
