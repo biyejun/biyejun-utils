@@ -32,28 +32,19 @@ importers:
 
   packages/biye:
     dependencies:
-      '@biye/biye-test2':
+      '@biye/biye-demo':
         specifier: workspace:*
-        version: link:../biye-test2
+        version: link:../biye-demo
     devDependencies:
       commander:
         specifier: ^11.1.0
         version: 11.1.0
 
-  packages/biye-test:
+  packages/biye-demo:
     dependencies:
       '@biye/biye-ui':
         specifier: workspace:*
         version: link:../biye-ui
-      shortid:
-        specifier: ^2.2.16
-        version: 2.2.16
-
-  packages/biye-test2:
-    dependencies:
-      '@biye/biye-utils':
-        specifier: workspace:*
-        version: link:../biye-utils
       shortid:
         specifier: ^2.2.16
         version: 2.2.16
