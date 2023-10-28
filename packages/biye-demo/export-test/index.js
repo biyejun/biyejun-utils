@@ -1,3 +1,3 @@
 module.exports = {
-  testVal: 'aa'
+  testVal: 'aa module.exports'
 }

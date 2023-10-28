@@ -6,11 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "files": [
-    "test.js",
-    "test2.js",
     "inner-utils",
     "index.js",
-    ".gitkeep",
     "export-test"
   ],
   "exports": {
@@ -20,6 +17,7 @@
       "import": "./export-test/index.mjs",
       "require": "./export-test/index.js"
     },
+    "./test": "./test.js",
     "./inner-utils": "./inner-utils/index.js"
   },
   "keywords": [],
