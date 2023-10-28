@@ -10,11 +10,16 @@
     "test2.js",
     "inner-utils",
     "index.js",
-    ".gitkeep"
+    ".gitkeep",
+    "export-test"
   ],
   "exports": {
     ".": "./index.js",
     "./package.json": "./package.json",
+    "./export-test": {
+      "import": "./export-test/index.mjs",
+      "require": "./export-test/index.js"
+    },
     "./inner-utils": "./inner-utils/index.js"
   },
   "keywords": [],
