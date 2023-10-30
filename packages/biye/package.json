@@ -1,6 +1,6 @@
 {
   "name": "@biye/biye",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "hhhh",
   "bin": {
     "cli": "bin/biye.js"

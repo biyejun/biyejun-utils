@@ -1,3 +1,12 @@
+## [1.0.7](https://github.com/biyejun/biyejun-utils/compare/v1.0.6...v1.0.7) (2023-10-30)
+
+
+### Features
+
+* **biye-demo:** 测试 ([a0aaee8](https://github.com/biyejun/biyejun-utils/commit/a0aaee86b131622ab0c95bb1975a9f7a8c3d23c9))
+
+
+
 ## [1.0.6](https://github.com/biyejun/biyejun-utils/compare/v1.0.5...v1.0.6) (2023-10-30)
 
 
