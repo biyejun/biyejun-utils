@@ -1,3 +1,14 @@
+## [1.0.6](https://github.com/biyejun/biyejun-utils/compare/v1.0.5...v1.0.6) (2023-10-30)
+
+
+### Features
+
+* **biye-demo:** 修改 ([1b0e4b5](https://github.com/biyejun/biyejun-utils/commit/1b0e4b58d45429d38016c1dedf984e546458ff79))
+* **biye-demo:** add test code ([858f213](https://github.com/biyejun/biyejun-utils/commit/858f2131f96212dc2a6ab3b108ea17cbfeb12f46))
+* **biye-tes:** test code ([3551312](https://github.com/biyejun/biyejun-utils/commit/355131246237c6075d1c213ae2f623e7a30b6423))
+
+
+
 ## [1.0.5](https://github.com/biyejun/biyejun-utils/compare/v1.0.4...v1.0.5) (2023-10-27)
 
 
