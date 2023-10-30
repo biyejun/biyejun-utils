@@ -17,6 +17,17 @@
       "import": "./export-test/index.mjs",
       "require": "./export-test/index.js"
     },
+    "./export-test2": {
+      "import": {
+        "types": "./export-test2/test.d.mts",
+        "node": "./export-test2/test.mjs",
+        "default": "./export-test2/test.js"
+      },
+      "require": {
+        "types": "./export-test2/test.d.ts",
+        "default": "./export-test2/test.cjs"
+      }
+    },
     "./test": "./test.js",
     "./inner-utils": "./inner-utils/index.js"
   },
