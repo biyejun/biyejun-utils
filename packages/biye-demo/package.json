@@ -18,7 +18,7 @@
       "import": "./export-test/index.mjs",
       "require": "./export-test/index.js"
     },
-    "./export-test2": {
+    "./export-test2/test": {
       "import": {
         "types": "./export-test2/test.d.mts",
         "node": "./export-test2/test.mjs",
