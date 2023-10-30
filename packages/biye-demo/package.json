@@ -8,6 +8,7 @@
   "files": [
     "inner-utils",
     "index.js",
+    "export-test2",
     "export-test"
   ],
   "exports": {
