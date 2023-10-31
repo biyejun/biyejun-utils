@@ -10,6 +10,9 @@ import minimist from 'minimist'
 const require = createRequire(import.meta.url);
 const commit = execaSync('git', ['rev-parse', '--short=7', 'HEAD']).stdout
 
+// build test
+const testPackage = ['biye-demo']
+
 const args = minimist(process.argv.slice(2));
 const formats = args.formats || args.f
 const devOnly = args.devOnly || args.d
@@ -62,6 +65,10 @@ async function build(target) {
 async function buildAll(targets) {
   const ret = [];
   for (const item of targets) {
+    // build test
+    if (!testPackage.includes(item)) {
+      continue;
+    }
     ret.push(build(item));
   }
   return Promise.all(ret);
