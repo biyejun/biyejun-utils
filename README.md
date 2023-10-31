@@ -89,6 +89,7 @@ Logged in as xxx on https://registry.npmjs.org/.
 
 [使用Github Actions自动化构建exe](https://zhuanlan.zhihu.com/p/133766528)
 
+[什么是超线程](https://www.intel.cn/content/www/cn/zh/gaming/resources/hyper-threading.html)
 
 ## 一些笔记
 
