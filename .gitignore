@@ -1,3 +1,7 @@
 node_modules/
 /.npmrc
 dist/
+*.tgz
+.DS_Store
+.idea
+cache
