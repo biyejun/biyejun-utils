@@ -32,7 +32,8 @@
     "minimist": "^1.2.8",
     "picocolors": "^1.0.0",
     "rollup": "^4.1.5",
-    "vitepress": "1.0.0-rc.24",
-    "semver": "^7.5.4"
+    "semver": "^7.5.4",
+    "typescript": "^5.2.2",
+    "vitepress": "1.0.0-rc.24"
   }
 }

@@ -35,9 +35,12 @@ importers:
       semver:
         specifier: ^7.5.4
         version: 7.5.4
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
       vitepress:
         specifier: 1.0.0-rc.24
-        version: 1.0.0-rc.24(@algolia/client-search@4.20.0)(@types/node@18.18.7)(search-insights@2.9.0)
+        version: 1.0.0-rc.24(@algolia/client-search@4.20.0)(@types/node@18.18.7)(search-insights@2.9.0)(typescript@5.2.2)
 
   packages/biye:
     dependencies:
@@ -635,7 +638,7 @@ packages:
       vue: ^3.2.25
     dependencies:
       vite: 4.5.0(@types/node@18.18.7)
-      vue: 3.3.7
+      vue: 3.3.7(typescript@5.2.2)
     dev: true
 
   /@vue/compiler-core@3.3.7:
@@ -718,7 +721,7 @@ packages:
     dependencies:
       '@vue/compiler-ssr': 3.3.7
       '@vue/shared': 3.3.7
-      vue: 3.3.7
+      vue: 3.3.7(typescript@5.2.2)
     dev: true
 
   /@vue/shared@3.3.7:
@@ -1594,6 +1597,12 @@ packages:
     engines: {node: '>=16'}
     dev: true
 
+  /typescript@5.2.2:
+    resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: true
+
   /uglify-js@3.17.4:
     resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}
     engines: {node: '>=0.8.0'}
@@ -1649,7 +1658,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitepress@1.0.0-rc.24(@algolia/client-search@4.20.0)(@types/node@18.18.7)(search-insights@2.9.0):
+  /vitepress@1.0.0-rc.24(@algolia/client-search@4.20.0)(@types/node@18.18.7)(search-insights@2.9.0)(typescript@5.2.2):
     resolution: {integrity: sha512-RpnL8cnOGwiRlBbrYQUm9sYkJbtyOt/wYXk2diTcokY4yvks/5lq9LuSt+MURWB6ZqwpSNHvTmxgaSfLoG0/OA==}
     hasBin: true
     peerDependencies:
@@ -1673,7 +1682,7 @@ packages:
       minisearch: 6.2.0
       shiki: 0.14.5
       vite: 4.5.0(@types/node@18.18.7)
-      vue: 3.3.7
+      vue: 3.3.7(typescript@5.2.2)
     transitivePeerDependencies:
       - '@algolia/client-search'
       - '@types/node'
@@ -1722,10 +1731,10 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
-      vue: 3.3.7
+      vue: 3.3.7(typescript@5.2.2)
     dev: true
 
-  /vue@3.3.7:
+  /vue@3.3.7(typescript@5.2.2):
     resolution: {integrity: sha512-YEMDia1ZTv1TeBbnu6VybatmSteGOS3A3YgfINOfraCbf85wdKHzscD6HSS/vB4GAtI7sa1XPX7HcQaJ1l24zA==}
     peerDependencies:
       typescript: '*'
@@ -1738,6 +1747,7 @@ packages:
       '@vue/runtime-dom': 3.3.7
       '@vue/server-renderer': 3.3.7(vue@3.3.7)
       '@vue/shared': 3.3.7
+      typescript: 5.2.2
     dev: true
 
   /which@2.0.2:
